@@ -336,6 +336,27 @@ footer a:hover { color: var(--green); }
 .menu-toggle-visible {
     display: none;
 }
+.nav-mobile-overlay {
+ position: absolute;
+ top: 80px;
+ left: 0;
+ width: 100%; /* CLÉ : Assure qu'il couvre exactement l'écran */
+ background-color: #fff;
+ box-shadow: var(--shadow);
+ z-index: 40;
+}
+.nav-mobile-overlay ul {
+ flex-direction: column;
+ text-align: center;
+ padding: 10px 0;
+}
+.nav-mobile-overlay ul li {
+ padding: 10px 0;
+ border-bottom: 1px solid #eee;
+}
+.nav-mobile-overlay ul li:last-child {
+ border-bottom: none;
+}
 @media(max-width:768px){
     nav#mainNav { display: none; }
     .menu-toggle-visible { 

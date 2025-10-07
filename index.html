@@ -201,19 +201,24 @@ h2.section-title::after {
 
 /* ABOUT */
 .about-content {
- display: flex;
- gap: 40px;
- align-items: center;
- flex-wrap: wrap;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap; /* Gardez cette ligne */
 }
 .about-content img {
- flex: 1;
- max-width: 480px;
- border-radius: var(--radius);
- box-shadow: var(--shadow);
+    /* ANCIEN: flex: 1; max-width: 480px; */
+    /* NOUVEAU: Assurez-vous que l'image ne dépasse jamais la largeur de son conteneur flex,
+       même lorsque l'image est plus grande que la max-width du parent. */
+    flex: 1 1 480px; /* L'image peut se contracter jusqu'à 100% (ou moins si besoin) */
+    max-width: 100%; /* LA CLÉ : Empêche l'image de dépasser la largeur disponible */
+    height: auto; /* IMPORTANT : Pour maintenir le ratio de l'image */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 .about-text {
- flex: 1;
+    /* NOUVEAU: Permet au texte de prendre l'espace restant */
+    flex: 1 1 400px; /* Base de 400px */
 }
 .about-text p {
  color: var(--gray);

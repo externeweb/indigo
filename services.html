@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indigomed – Nos Services Détaillés</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* VARIABLES DE COULEUR ET TAILLE */
+:root {
+  --green: #7ac142;
+  --dark: #111;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --text: #212529;
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
+  --radius: 10px;
+}
+
+/* FIX GÉNÉRAL ET RÉINITIALISATION */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Empêcher le défilement horizontal */
+    overflow-x: hidden; 
+}
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: #fff; /* Fond blanc pour cette page */
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* HEADER (RÉUTILISÉ) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+}
+.logo {
+  font-weight: 700;
+  color: var(--green);
+  font-size: 22px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: color .3s;
+}
+nav a:hover {
+  color: var(--green);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.lang-btn {
+  background: var(--dark);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.social a {
+  color: var(--green);
+  font-size: 18px;
+}
+
+/* BOUTONS ET TITRES (RÉUTILISÉS) */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .3s;
+}
+.btn-green {
+  background: var(--green);
+  color: #fff;
+}
+.btn-green:hover {
+  transform: scale(1.02);
+  background: #68aa39;
+}
+h2.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+}
+h2.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--green);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* STYLES: PAGE SERVICES DÉTAILLÉS */
+/* ------------------------------------------------------------------ */
+
+#services-page {
+    max-width: 1200px;
+    margin: 50px auto 100px;
+    padding: 0 20px;
+}
+.service-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    color: var(--gray);
+    font-size: 18px;
+}
+
+/* BLOC DE SERVICE INDIVIDUEL */
+.service-block {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding: 40px;
+    background: var(--light); /* Léger fond gris pour différencier les blocs */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+.service-block:hover {
+    transform: translateY(-5px);
+}
+/* Inverser l'ordre tous les deux blocs pour un effet ZIG-ZAG */
+.service-block:nth-child(even) {
+    flex-direction: row-reverse;
+    background: #fff; 
+}
+.service-block:nth-child(even) .service-image {
+    border-right: 5px solid var(--green);
+    border-left: none;
+}
+.service-block:nth-child(odd) .service-image {
+    border-left: 5px solid var(--green);
+}
+
+
+.service-icon-content {
+    flex: 2;
+}
+.service-icon-content h3 {
+    font-size: 28px;
+    color: var(--dark);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+.service-icon-content i {
+    font-size: 40px;
+    color: var(--green);
+    margin-right: 15px;
+}
+.service-icon-content p {
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.service-image {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* NOUVEAUX STYLES: SECTION CTA */
+.cta-wrapper {
+    /* Nouveau conteneur pour la couleur pleine largeur */
+    background: var(--green); 
+    /* Ajout d'une marge en bas pour séparer du footer */
+    margin-bottom: 50px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.cta-section {
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    /* Centrer le contenu et ajouter la max-width pour le texte/bouton */
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+.cta-section h3 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Style pour le bouton blanc */
+.btn-white {
+    background: #fff;
+    color: var(--green);
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: var(--radius);
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-white:hover {
+    background: #eee;
+    transform: scale(1.05);
+}
+
+
+/* FOOTER (RÉUTILISÉ) */
+footer {
+  background: #111;
+  color: #ccc;
+  margin: 0 !important; 
+  width: 100vw !important; 
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 50px 20px;
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+footer h4 { color: #fff; }
+footer a, footer p { line-height: 1.8; }
+footer a { color: #ccc; text-decoration: none; transition: color .3s; }
+footer a:hover { color: var(--green); }
+.copy {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Back to top (RÉUTILISÉ) */
+#toTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  background: var(--dark); 
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-size: 20px;
+}
+
+/* RESPONSIVE & MOBILE */
+.menu-toggle-visible {
+    display: none;
+}
+@media(max-width:992px){
+    nav#mainNav { display: none; }
+    .menu-toggle-visible { 
+        display: block; 
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark);
+        margin-left: 15px;
+    }
+    .service-block, .service-block:nth-child(even) {
+        flex-direction: column; /* Mise en colonne sur mobile */
+        text-align: center;
+    }
+    .service-icon-content h3 {
+        justify-content: center;
+    }
+    .service-image {
+        order: -1; /* L'image passe au-dessus du texte */
+        margin-bottom: 20px;
+    }
+    .service-image, .service-block:nth-child(even) .service-image {
+        border-left: none !important;
+        border-right: none !important;
+    }
+    .cta-section h3 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">INDIGOMED</div>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li> 
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="services.html" style="color:var(--green);">Services</a></li>
+        <li><a href="produits.html">Produits</a></li>
+        <li><a href="produits.html">Équipements</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn">EN</button>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+        <div class="menu-toggle-visible" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+    <nav class="nav-mobile-overlay" id="mobileNav" style="display:none;">
+        <ul>
+            <li><a href="index.html" onclick="toggleMenu()">Accueil</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">À propos</a></li>
+            <li><a href="services.html" onclick="toggleMenu()">Services</a></li>
+            <li><a href="produits.html" onclick="toggleMenu()">Produits</a></li>
+            <li><a href="produits.html" onclick="toggleMenu()">Équipements</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="services-page">
+  <h2 class="section-title">Nos Domaines d'expertise en détail</h2>
+  
+  <div class="service-intro">
+    Nous offrons des solutions complètes et certifiées, allant de la fourniture de produits essentiels à l'installation d'équipements de pointe et au support technique continu, pour garantir la performance et la conformité de vos activités.
+  </div>
+
+  <div class="service-block">
+    <div class="service-icon-content">
+      <h3><i class="fas fa-flask"></i> Analyses Médicales et Biologiques</h3>
+      <p>Indigomed est un partenaire de confiance pour les laboratoires d'analyses médicales. Nous fournissons une gamme complète de réactifs cliniques de haute précision pour l'hématologie, la biochimie, l'immunologie et la microbiologie, garantissant des résultats de diagnostic fiables et rapides.</p>
+      <p>Nous assurons également la distribution des consommables adaptés (tubes de prélèvement sous vide, pointes de pipettes, lames) conformes aux normes de stérilité et de sécurité les plus strictes.</p>
+      <a href="produits.html" class="btn btn-green">Voir les produits pour analyses</a>
+    </div>
+    <div class="service-image">
+      <img src="https://plus.unsplash.com/premium_photo-1723044801510-c6a6c2087d85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGFuYWx5c2VzJTIwYmlvbG9naXF1ZXN8ZW58MHx8MHx8fDA%3D" alt="Analyses médicales">
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-icon-content">
+      <h3><i class="fas fa-microscope"></i> Contrôle de Qualité Industrielle</h3>
+      <p>Notre expertise s'étend au secteur industriel (agroalimentire, pharmaceutique, cosmétique et détergent) nécessitant un contrôle qualité rigoureux. Nous fournissons des produits chimiques, verreries certifiées et une sélection de milieux de culture de renommée mondiale.</p>
+      <p>Tous nos produits sont sélectionnés pour leur conformité aux normes internationales (ISO, pharmacopées), permettant à nos clients d'atteindre et de maintenir une certification qualité irréprochable dans leurs processus de recherche et de production.</p>
+      <a href="produits.html" class="btn btn-green">Voir les produits de contrôle qualité</a>
+    </div>
+    <div class="service-image">
+      <img src="https://images.unsplash.com/photo-1582560475135-72433678395b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvbnRyb2xlJTIwZGUlMjBxdWFsaXQlQzMlQTl8ZW58MHx8MHx8fDA%3D" alt="Contrôle qualité industriel">
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-icon-content">
+      <h3><i class="fas fa-cogs"></i> Équipements de Laboratoire et Support</h3>
+      <p>Nous distribuons des équipements d'analyse automatiques et semi-automatiques de marques internationales. Au-delà de la vente, notre service inclut l'installation complète des appareils, la calibration initiale et la formation du personnel technique.</p>
+      <p>Notre service après-vente (SAV) assure un support technique rapide et efficace, ainsi que la fourniture de pièces de rechange d'origine, minimisant le temps d'arrêt de vos opérations critiques et maximisant la durée de vie de votre investissement.</p>
+      <a href="contact.html" class="btn btn-green">Demander un support technique</a>
+    </div>
+    <div class="service-image">
+      <img src="https://images.unsplash.com/photo-1707944745824-c038557dfd7c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2VudHJpZnVnZXVzZXxlbnwwfHwwfHx8MA%3D%3D" alt="Support technique équipement">
+    </div>
+  </div>
+
+</section>
+
+<div class="cta-wrapper">
+    <div class="cta-section">
+        <h3>Prêt à optimiser votre laboratoire ?</h3>
+        <p>Discutons de vos besoins spécifiques en produits, réactifs ou équipements. Notre équipe de spécialistes est là pour vous conseiller.</p>
+        <a href="contact.html" class="btn-white"><i class="fas fa-handshake"></i> Parler à un spécialiste</a>
+    </div>
+</div>
+
+
+<footer id="contact-footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Indigomed</h4>
+        <p>Fournisseur de produits, réactifs et équipements pour laboratoires d’analyses et de contrôle qualité, visant l'excellence.</p>
+      </div>
+      <div>
+        <h4>Liens rapides</h4>
+        <p><a href="index.html">Accueil</a><br><a href="about.html">À propos</a><br><a href="services.html">Services</a><br><a href="produits.html">Produits</a><br><a href="produits.html">Équipements</a><br><a href="contact.html">Contact</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email : contact@indigomed.dz<br>Tél : +213 0 000 000</p>
+        <div class="social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">© 2025 Indigomed — Tous droits réservés</div>
+</footer>
+
+<div id="toTop" title="Haut de page"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+// Toggle pour le menu mobile
+function toggleMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    mobileNav.style.display = (mobileNav.style.display === 'none' || mobileNav.style.display === '') ? 'block' : 'none';
+}
+
+// Scroll top
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{toTop.style.display=window.scrollY>300?'flex':'none';});
+toTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+
+</body>
+</html>

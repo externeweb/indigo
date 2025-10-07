@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indigomed – Produits & Équipements de Laboratoire</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* VARIABLES DE COULEUR ET TAILLE */
+:root {
+ --green: #7ac142;
+ --dark: #111;
+ --light: #f8f9fa;
+ --gray: #6c757d;
+ --text: #212529;
+ --shadow: 0 8px 20px rgba(0,0,0,0.08);
+ --radius: 10px;
+}
+
+/* FIX MAJEUR 1: Box-Sizing pour empêcher le débordement des boîtes */
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+
+/* FIX MAJEUR 2: Réinitialisation et suppression du défilement horizontal */
+html, body {
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ /* LA CLÉ DÉFINITIVE : Empêcher le défilement horizontal */
+ overflow-x: hidden;
+}
+body {
+ font-family: "Poppins", Arial, sans-serif;
+ background: var(--light);
+ color: var(--text);
+ scroll-behavior: smooth;
+}
+
+/* HEADER */
+header {
+ position: sticky;
+ top: 0;
+ z-index: 50;
+ background: #fff;
+ box-shadow: var(--shadow);
+}
+.navbar {
+ max-width: 1200px;
+ margin: auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 16px 20px;
+}
+.logo {
+ font-weight: 700;
+ color: var(--green);
+ font-size: 22px;
+}
+/* Navigation Desktop */
+nav ul {
+ list-style: none;
+ display: flex;
+ gap: 20px;
+ margin: 0;
+ padding: 0;
+}
+nav a {
+ text-decoration: none;
+ color: var(--text);
+ font-weight: 600;
+ transition: color .3s;
+}
+nav a:hover {
+ color: var(--green);
+}
+.nav-actions {
+ display: flex;
+ align-items: center;
+ gap: 15px;
+}
+.lang-btn {
+ background: var(--dark);
+ border: none;
+ color: #fff;
+ padding: 8px 14px;
+ border-radius: 5px;
+ font-weight: 600;
+ cursor: pointer;
+}
+.lang-btn:hover {
+ background: #333;
+}
+.social a {
+ color: var(--green);
+ font-size: 18px;
+ transition: color .3s;
+}
+.social a:hover { color: #68aa39; }
+
+/* HERO (Pleine hauteur et largeur garanties) */
+.hero {
+ /* FIX DÉFINITIF: Centrage 100vw pour ignorer la scrollbar */
+ max-width: none !important;
+ margin: 0 !important;
+ padding: 0 !important;
+ width: 100vw !important;
+ position: relative;
+ left: 50%;
+ transform: translateX(-50%);
+ /******************************************/
+
+ height: 100vh;
+ background: url('https://plus.unsplash.com/premium_photo-1664474799750-60a33be2c5c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGxhYm9yYXRvaXJlfGVufDB8fDB8fHww') center/cover no-repeat;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ color: #fff;
+}
+
+#home {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hero::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background: rgba(0,0,0,0.65);
+}
+.hero-content {
+ position: relative;
+ z-index: 1;
+ max-width: 800px;
+ padding: 0 20px;
+ animation: fadeInUp 1.5s ease;
+}
+.hero h1 {
+ font-size: 64px;
+ margin-bottom: 20px;
+ animation: zoomIn 2s ease;
+}
+.hero p {
+ font-size: 20px;
+ line-height: 1.6;
+ margin-bottom: 30px;
+}
+.btn {
+ display: inline-block;
+ padding: 12px 26px;
+ border-radius: var(--radius);
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
+ text-decoration: none;
+ transition: all .3s;
+}
+.btn-green {
+ background: var(--green);
+ color: #fff;
+}
+.btn-green:hover {
+ transform: scale(1.05);
+ background: #68aa39;
+}
+.btn-light {
+ background: #fff;
+ color: var(--text);
+}
+.btn-light:hover {
+ background: var(--light);
+}
+
+/* TITRES & SECTIONS */
+section {
+ /* Style par défaut pour About et Services */
+ max-width: 1200px;
+ margin: 100px auto;
+ padding: 0 20px;
+}
+h2.section-title {
+ text-align: center;
+ font-size: 36px;
+ margin-bottom: 50px;
+ text-transform: uppercase;
+ position: relative;
+ display: block;
+}
+h2.section-title::after {
+ content: "";
+ display: block;
+ width: 60px;
+ height: 4px;
+ background: var(--green);
+ margin: 10px auto 0;
+ border-radius: 2px;
+}
+
+/* ABOUT */
+.about-content {
+ display: flex;
+ gap: 40px;
+ align-items: center;
+ flex-wrap: wrap;
+}
+.about-content img {
+ flex: 1;
+ max-width: 480px;
+ border-radius: var(--radius);
+ box-shadow: var(--shadow);
+}
+.about-text {
+ flex: 1;
+}
+.about-text p {
+ color: var(--gray);
+ line-height: 1.6;
+}
+
+/* SERVICES */
+.services {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 24px;
+}
+.service {
+ background: #fff;
+ border-radius: var(--radius);
+ box-shadow: var(--shadow);
+ padding: 30px 24px;
+ transition: transform .3s, box-shadow .3s;
+ text-align: center;
+ animation: fadeInUp 1.2s ease;
+}
+.service:hover {
+ transform: translateY(-6px);
+ box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.service i {
+ font-size: 40px;
+ color: var(--green);
+ margin-bottom: 12px;
+}
+.service h3 {
+ color: var(--green);
+ margin-bottom: 10px;
+}
+.service p {
+ color: var(--gray);
+}
+
+/* STATS (CHIFFRES CLÉS) */
+.stats {
+ background: var(--green);
+ color: #fff;
+ text-align: center;
+ /* FIX DÉFINITIF: Centrage 100vw pour ignorer la scrollbar */
+ max-width: none !important;
+ margin: 0 !important;
+ width: 100vw !important;
+ position: relative;
+ left: 50%;
+ transform: translateX(-50%);
+ /* Re-applique le padding interne */
+ padding: 60px 20px;
+}
+.stats-grid {
+ max-width: 1200px;
+ margin: auto;
+ display: flex;
+ justify-content: space-around;
+ flex-wrap: wrap;
+ gap: 30px;
+}
+.stat {
+ flex: 1 1 180px;
+}
+.stat h4 {
+ font-size: 48px;
+ margin: 0;
+ color: #fff;
+}
+.stat p {
+ margin: 8px 0 0;
+ font-weight: 500;
+ text-transform: uppercase;
+ font-size: 14px;
+ letter-spacing: 1px;
+}
+
+/* NOUVEAU: BRANDS SECTION */
+.brands-section {
+    padding: 80px 20px;
+    background: #fff; /* Fond blanc ou var(--light) pour la différencier */
+    text-align: center;
+    max-width: 100vw;
+    margin: 100px auto;
+}
+.brands-section .section-title {
+    margin-bottom: 40px;
+}
+.logo-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 30px;
+    align-items: center;
+}
+.logo-item {
+    padding: 15px;
+    background: var(--light);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+.logo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.logo-item img {
+    max-width: 80%;
+    max-height: 70px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+.logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* NOUVEAUX STYLES: SECTION CTA */
+.cta-wrapper {
+    /* Nouveau conteneur pour la couleur pleine largeur */
+    background: var(--green); 
+    /* Ajout d'une marge en bas pour séparer du footer */
+    margin-bottom: 50px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.cta-section {
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    /* Centrer le contenu et ajouter la max-width pour le texte/bouton */
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+.cta-section h3 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Style pour le bouton blanc */
+.btn-white {
+    background: #fff;
+    color: var(--green);
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: var(--radius);
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-white:hover {
+    background: #eee;
+    transform: scale(1.05);
+}
+
+/* TESTIMONIALS (Témoignages) */
+#testimonials {
+ background: #f0f0f0;
+ /* FIX DÉFINITIF: Centrage 100vw pour ignorer la scrollbar */
+ max-width: none !important;
+ margin: 0 !important;
+ width: 100vw !important;
+ position: relative;
+ left: 50%;
+ transform: translateX(-50%);
+ /* Re-applique le padding interne */
+ padding: 100px 20px;
+}
+.testimonials-grid {
+ max-width: 1200px;
+ margin: auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 30px;
+ margin-top: 40px;
+}
+.testimonial-card {
+ background: #fff;
+  padding: 30px;
+ border-radius: var(--radius);
+ box-shadow: var(--shadow);
+ border-top: 5px solid var(--green);
+ position: relative;
+ transition: transform 0.3s;
+}
+.testimonial-card:hover {
+ transform: translateY(-5px);
+}
+.testimonial-card i.fa-quote-left {
+ color: var(--green);
+ font-size: 30px;
+ margin-bottom: 15px;
+ display: block;
+}
+.testimonial-text {
+ font-style: italic;
+ color: var(--text);
+ margin-bottom: 20px;
+ line-height: 1.7;
+ font-size: 15px;
+}
+.testimonial-author {
+ font-weight: 700;
+ color: var(--dark);
+ display: block;
+}
+.testimonial-author small {
+ font-weight: 400;
+ color: var(--gray);
+ display: block;
+ font-size: 13px;
+ margin-top: 4px;
+}
+
+/* FOOTER */
+footer {
+ background: #111;
+ color: #ccc;
+ /* FIX DÉFINITIF: Centrage 100vw pour ignorer la scrollbar */
+ margin: 0 !important;
+ width: 100vw !important;
+ position: relative;
+ left: 50%;
+ transform: translateX(-50%);
+ /* Re-applique le padding interne */
+ padding: 50px 20px;
+}
+.footer-grid {
+ max-width: 1200px;
+ margin: auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+ gap: 30px;
+}
+footer h4 {
+ color: #fff;
+ margin-bottom: 14px;
+}
+footer a, footer p {
+ line-height: 1.8;
+}
+footer a {
+ color: #ccc;
+ text-decoration: none;
+ transition: color .3s;
+}
+footer a:hover { color: var(--green); }
+footer .social a {
+ color: #ccc;
+ margin-right: 12px;
+}
+footer .social a:hover { color: var(--green); }
+.copy {
+ text-align: center;
+ margin-top: 30px;
+ font-size: 14px;
+ color: #777;
+}
+
+/* Back to top (NOIR et CIRCULAIRE) */
+#toTop {
+ position: fixed;
+ right: 20px;
+ bottom: 20px;
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ background: var(--dark);
+ color: #fff;
+ display: none;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+ transition: background .3s;
+ z-index: 1000;
+ font-size: 20px;
+}
+#toTop:hover { background: var(--green); }
+
+/* RESPONSIVE & MOBILE MENU */
+.menu-toggle-visible {
+ display: none;
+ font-size: 24px;
+ cursor: pointer;
+ color: var(--dark);
+ margin-left: 15px;
+}
+.nav-mobile-overlay {
+ position: absolute;
+ top: 80px;
+ left: 0;
+ width: 100%;
+ background-color: #fff;
+ box-shadow: var(--shadow);
+ z-index: 40;
+}
+.nav-mobile-overlay ul {
+ flex-direction: column;
+ text-align: center;
+ padding: 10px 0;
+}
+.nav-mobile-overlay ul li {
+ padding: 10px 0;
+ border-bottom: 1px solid #eee;
+}
+.nav-mobile-overlay ul li:last-child {
+ border-bottom: none;
+}
+@media(max-width:992px){
+ nav#mainNav { display: none; }
+ .menu-toggle-visible { display: block; }
+ .hero h1 { font-size: 44px; }
+}
+@media(max-width:768px){
+ .hero h1{font-size:36px;}
+ .hero p{font-size:16px;}
+ .about-content{flex-direction:column;}
+ .stats-grid { flex-direction: column; }
+ .stat { margin-bottom: 20px; }
+ .testimonials-grid { grid-template-columns: 1fr; }
+    .logo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Animations */
+@keyframes fadeInUp {
+ from {opacity: 0; transform: translateY(40px);}
+ to {opacity: 1; transform: translateY(0);}
+}
+@keyframes zoomIn {
+ from {transform: scale(0.95);}
+ to {transform: scale(1);}
+}
+/* Styles d'animation supplémentaires pour les nouvelles sections */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(50px);
+    transition: all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1); 
+}
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+/* Animation séquentielle pour les logos */
+.logo-grid .logo-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+.brands-section.show .logo-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.brands-section.show .logo-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.brands-section.show .logo-item:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.brands-section.show .logo-item:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.brands-section.show .logo-item:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.cta-wrapper.show {
+    transition-delay: 0.2s;
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="navbar">
+ <div class="logo">INDIGOMED</div>
+ <nav id="mainNav">
+  <ul>
+  <li><a href="index.html">Accueil</a></li>
+ <li><a href="about.html">À propos </a></li>
+ <li><a href="services.html">Services</a></li>
+ <li><a href="produits.html">Produits</a></li>
+ <li><a href="produits.html">Équipements</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ </ul>
+ </nav>
+ <div class="nav-actions">
+ <button class="lang-btn" id="langBtn">EN</button>
+ <div class="social">
+ <a href="#"><i class="fab fa-facebook-f"></i></a>
+ <a href="#"><i class="fab fa-linkedin-in"></i></a>
+ </div>
+ <div class="menu-toggle-visible" onclick="toggleMenu()">
+ <i class="fas fa-bars"></i>
+ </div>
+ </div>
+ <nav class="nav-mobile-overlay" id="mobileNav" style="display:none;">
+ <ul>
+ <li><a href="index.html" onclick="toggleMenu()">Accueil</a></li>
+ <li><a href="about.html" onclick="toggleMenu()">À propos </a></li>
+ <li><a href="services.html" onclick="toggleMenu()">Services</a></li>
+ <li><a href="produits.html" onclick="toggleMenu()">Produits</a></li>
+ <li><a href="produits.html" onclick="toggleMenu()">Équipements</a></li>
+ <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
+ </ul>
+ </nav>
+ </div>
+</header>
+
+<section class="hero" id="home">
+ <div class="hero-content">
+ <h1>Des solutions fiables pour vos laboratoires</h1>
+ <p>Produits, réactifs et équipements conformes aux normes internationales pour analyses médicales et contrôle qualité.</p>
+ <a href="about.html" class="btn btn-green">EN SAVOIR PLUS</a>
+ <a href="contact.html" class="btn btn-light">CONTACTEZ-NOUS</a>
+ </div>
+</section>
+
+<section id="about" class="hidden">
+ <h2 class="section-title">À propos de la société</h2>
+ <div class="about-content">
+ <img src="https://plus.unsplash.com/premium_photo-1661628984416-946603207cfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGFib3JhdG9pcmV8ZW58MHx8MHx8fDA%3D" alt="Laboratoire">
+ <div class="about-text">
+ <p>Depuis 4 ans, Indigomed s’engage à soutenir le développement du secteur de la santé et de l’industrie en Algérie. Nous représentons des marques internationales et proposons une large gamme de produits : réactifs, consommables, équipements, milieux de culture et verreries conformes aux normes mondiales.</p>
+ <p>Notre mission : offrir aux laboratoires d’analyses médicales, de recherche et de contrôle qualité, des produits fiables et un accompagnement professionnel, contribuant directement à l'excellence de la santé et de l'industrie.</p>
+ </div>
+ </div>
+</section>
+
+<div class="stats">
+ <div class="stats-grid">
+ <div class="stat">
+ <h4>4+</h4>
+ <p>Années d’expérience</p>
+ </div>
+ <div class="stat">
+ <h4>120+</h4>
+ <p>Clients satisfaits</p>
+ </div>
+ <div class="stat">
+<h4>500+</h4>
+ <p>Produits distribués</p>
+ </div>
+ <div class="stat">
+ <h4>10+</h4>
+ <p>Marques représentées</p>
+ </div>
+ </div>
+</div>
+
+<section id="services">
+ <h2 class="section-title">Nos Domaines d'expertise</h2>
+ <div class="services">
+ <div class="service"><i class="fas fa-flask"></i><h3>Analyses Médicales</h3><p>Consommables adaptés et réactifs de haute précision pour les laboratoires d'analyses biologiques et médicales.</p></div>
+ <div class="service"><i class="fas fa-microscope"></i><h3>Contrôle de Qualité</h3><p>Solutions chimiques, verreries et milieux de culture pour l'agroalimentaire, la pharmacie, la cosmétique et le détergent.</p></div>
+ <div class="service"><i class="fas fa-cogs"></i><h3>Équipements & Support</h3><p>Appareils performants de laboratoire, avec installation, calibration et support technique rigoureux.</p></div>
+ </div>
+</section>
+
+<section class="brands-section hidden">
+    <h2 class="section-title">Nos Marques Représentées</h2>
+    <div class="logo-grid">
+        <div class="logo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMvSUrpxn_s0ruQPO1tRZdgHrnoKg-peI0Ww&s" alt="Logo Marque A"></div>
+        <div class="logo-item"><img src="https://www.gesanproduction.it/wp-content/uploads/2023/10/logo-gesan-production-2021.png" alt="Logo Marque B"></div>
+        <div class="logo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDb9qv3oZywZTnBDQMbv9S58eGWTv1cyfsHw&s" alt="Logo Marque C"></div>
+        <div class="logo-item"><img src="https://www.serlabo.fr/media/marques/velp.jpg" alt="Logo Marque D"></div>
+        <div class="logo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmZmK5sEa5ZD2_270JTm5Vc_4plghGIjV4Mw&s" alt="Logo Marque E"></div>
+    </div>
+</section>
+
+<div class="cta-wrapper">
+    <div class="cta-section">
+        <h3>Prêt à optimiser votre laboratoire ?</h3>
+        <p>Discutons de vos besoins spécifiques en produits, réactifs ou équipements. Notre équipe de spécialistes est là pour vous conseiller.</p>
+        <a href="contact.html" class="btn-white"><i class="fas fa-handshake"></i> Parler à un spécialiste</a>
+    </div>
+</div>
+
+<section id="testimonials">
+ <h2 class="section-title">Ce que disent nos Clients</h2>
+ <div class="testimonials-grid">
+ <div class="testimonial-card">
+ <i class="fas fa-quote-left"></i>
+ <p class="testimonial-text">"La qualité des réactifs et la rapidité de livraison d'Indigomed sont exemplaires. Un partenaire essentiel pour notre laboratoire d'analyses biologiques."</p>
+ <span class="testimonial-author">Dr. Sofia B.</span>
+ <small>Directrice, Laboratoire d'Analyses</small>
+ </div>
+ <div class="testimonial-card">
+ <i class="fas fa-quote-left"></i>
+ <p class="testimonial-text">"Leurs solutions de contrôle qualité nous ont permis d'atteindre une conformité ISO irréprochable. Un service client très compétent et réactif."</p>
+ <span class="testimonial-author">M. Kamal H.</span>
+ <small>Responsable Qualité, Industrie Pharmaceutique</small>
+ </div>
+ <div class="testimonial-card">
+ <i class="fas fa-quote-left"></i>
+ <p class="testimonial-text">"Des équipements de pointe et un suivi technique rigoureux. Indigomed est un acteur clé pour la modernisation et la performance de notre laboratoire."</p>
+ <span class="testimonial-author">Mme. Fatiha Z.</span>
+ <small>Laboratoire de Recherche & Développement</small>
+ </div>
+ </div>
+</section>
+
+<footer id="contact-footer">
+ <div class="footer-grid">
+ <div>
+ <h4>Indigomed</h4>
+ <p>Fournisseur de produits, réactifs et équipements pour laboratoires d’analyses et de contrôle qualité, visant l'excellence.</p>
+ </div>
+ <div>
+ <h4>Liens rapides</h4>
+ <p><a href="#home">Accueil</a><br><a href="#about">À propos</a><br><a href="#services">Services</a><br><a href="#products">Produits</a><br><a href="#equip">Équipements</a><br><a href="#contact-footer">Contact</a></p>
+ </div>
+ <div>
+ <h4>Contact</h4>
+ <p>Email : contact@indigomed.dz<br>Tél : +213 0 000 000</p>
+ <div class="social">
+ <a href="#"><i class="fab fa-facebook-f"></i></a>
+ <a href="#"><i class="fab fa-linkedin-in"></i></a>
+ </div>
+ </div>
+ </div>
+ <div class="copy">© 2025 Indigomed — Tous droits réservés</div>
+</footer>
+
+<div id="toTop" title="Haut de page"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+// Toggle pour le menu mobile
+function toggleMenu() {
+ const mobileNav = document.getElementById('mobileNav');
+ // Si 'display' est vide ou 'none', on met 'block', sinon on met 'none'
+ mobileNav.style.display = (mobileNav.style.display === 'none' || mobileNav.style.display === '') ? 'block' : 'none';
+}
+
+// Dynamic Scroll Animations (Fade-in on scroll)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Ajoute la classe 'show' lorsque l'élément est dans le viewport
+            entry.target.classList.add('show');
+            // Arrête d'observer l'élément une fois qu'il est visible
+            // NOTE: Pour les sections .service et .testimonial-card, nous utilisons l'ancienne méthode d'animation CSS
+            if (!entry.target.classList.contains('cta-wrapper') && !entry.target.classList.contains('brands-section')) {
+                 observer.unobserve(entry.target);
+            }
+        }
+    });
+}, {
+    // Déclenche l'animation lorsque 10% de l'élément est visible
+    threshold: 0.1 
+});
+
+// 1. Anciens éléments (réinitialisés par le code ci-dessous)
+const elementsToAnimateOld = document.querySelectorAll('.service, .about-content, .testimonial-card');
+
+// 2. Nouveaux éléments avec la classe 'hidden'
+const elementsToAnimateNew = document.querySelectorAll('.brands-section, .cta-wrapper');
+
+// Combine les éléments et applique le style initial pour l'animation Intersection Observer
+const allAnimatedElements = document.querySelectorAll('.hidden');
+allAnimatedElements.forEach((el) => observer.observe(el));
+
+
+// L'ancien script d'animation est mis à jour pour être non invasif.
+document.querySelectorAll('.service, .testimonial-card').forEach(el=>{
+    // On laisse l'animation CSS faire le travail pour ces éléments qui ont déjà des styles.
+});
+
+
+// Scroll top
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{toTop.style.display=window.scrollY>300?'flex':'none';});
+toTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+// Fermer le menu mobile après un clic de navigation
+document.querySelectorAll('.nav-mobile-overlay a').forEach(item => {
+ item.addEventListener('click', () => {
+ document.getElementById('mobileNav').style.display = 'none';
+ });
+});
+</script>
+
+</body>
+</html>
